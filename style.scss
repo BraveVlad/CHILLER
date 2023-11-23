@@ -107,6 +107,7 @@ body {
         padding: 1rem;
         color: var(--color-primary);
         background-color: var(--color-secondary);
+        border: var(--border-size) solid var(--border-color);
 
         &:hover {
             background-color: grey;

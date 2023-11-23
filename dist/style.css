@@ -122,6 +122,7 @@ body {
   padding: 1rem;
   color: var(--color-primary);
   background-color: var(--color-secondary);
+  border: var(--border-size) solid var(--border-color);
 }
 .objects-view__create:hover {
   background-color: grey;
