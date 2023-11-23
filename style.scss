@@ -16,12 +16,11 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding-inline: 0.5rem;
+    margin-inline: 0.5rem;
 
     &__title {
         margin-inline: auto;
     }
-
 }
 
 .main-logo {
@@ -35,7 +34,6 @@ body {
     background-color: black;
 
     h1 {
-
         padding: 1rem;
         margin: auto 0;
         color: white;

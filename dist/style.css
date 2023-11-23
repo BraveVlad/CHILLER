@@ -41,7 +41,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-inline: 0.5rem;
+  margin-inline: 0.5rem;
 }
 .topbar__title {
   margin-inline: auto;
