@@ -13,7 +13,7 @@
 
     <nav class="topbar">
         <li class="topbar__title">
-            <h2>Title</h2>
+            <h2>Page Title</h2>
         </li>
         <li class="topbar__actions">
             <a href="/" class="topbar__refresh">🔃</a>
@@ -32,33 +32,31 @@
 
     <main class="dashboard">
         <div class="dashboard__menu">
-            <menu class="objects-listview">
-                <li class="objects-listview__header">
-                    <h3>Chillers</h3>
-                    <p>Amount: 23</p>
-                    <button>Create Chiller</button>
-                </li>
-                <li class="objects-listview__list">
-                    <ul class="chiller-list">
-                        <li class="chiller-list__chiller">
-                            <button class="chiller-list__name">CHILLER_ALPHA</button>
-                        </li>
-                        <li class="chiller-list__chiller">
-                            <button class="chiller-list__name">CHILLER_ALPHA</button>
-                        </li>
-                        <li class="chiller-list__chiller">
-                            <button class="chiller-list__name">CHILLER_ALPHA</button>
-                        </li>
-                    </ul>
-                </li>
-            </menu>
+            <div class="objects-view">
+                <div class="objects-view__header">
+                    <h3 class="objects-view__title">Chillers List</h3>
+                    <p class="objects-view__amount">Amount: 23</p>
+                    <button class="objects-view__create">Create Chiller</button>
+                </div>
+                <ul class="objects-view__list">
+                    <li class="objects-view__item">
+                        <button class="objects-view__button">CHILLER_ALPHA</button>
+                    </li>
+                    <li class="objects-view__item">
+                        <button class="objects-view__button">CHILLER_ALPHA</button>
+                    </li>
+                    <li class="objects-view__item">
+                        <button class="objects-view__button">CHILLER_ALPHA</button>
+                    </li>
+                </ul>
+            </div>
         </div>
+
         <div class="dashboard__mainarea">
             <section class="chiller-creator">CHILLER CREATE FORM
 
             </section>
         </div>
-
     </main>
 
     <script type="module" src="dist/app.js"></script>

@@ -27,3 +27,7 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+
+button {
+  all: unset;
+}

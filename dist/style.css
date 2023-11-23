@@ -28,6 +28,18 @@ a:active {
   color: inherit;
 }
 
+button {
+  all: unset;
+}
+
+:root {
+  --color-primary: black;
+  --color-secondary: white;
+  --color-action: rgb(0, 0, 0, 0.5);
+  --border-color: black;
+  --border-size: 4px;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 7fr;
@@ -53,12 +65,12 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: var(--color-primary);
 }
 .main-logo h1 {
   padding: 1rem;
   margin: auto 0;
-  color: white;
+  color: var(--color-secondary);
 }
 
 .menubar {
@@ -67,11 +79,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color: black;
+  gap: 1rem;
+  background-color: var(--color-primary);
 }
 .menubar__item {
   text-align: center;
-  margin-top: 2rem;
   padding: 1rem;
   color: white;
 }
@@ -87,28 +99,38 @@ body {
 }
 .dashboard__mainarea {
   flex: 4;
-  background-color: yellow;
 }
 
-.objects-listview {
+.objects-view {
   height: 100%;
   display: flex;
   flex-direction: column;
+  color: var(--color-secondary);
+  border: var(--border-size) solid var(--border-color);
+  gap: 1rem;
 }
-.objects-listview__header {
+.objects-view__header {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  background-color: var(--color-primary);
 }
-.objects-listview__list {
+.objects-view__list {
   flex: 6;
-}
-
-.chiller-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 1rem;
+  text-align: center;
+}
+.objects-view__button {
+  padding: 1rem;
+  border: var(--border-size) solid var(--border-color);
+  color: black;
+  background-color: var(--color-secondary);
+}
+.objects-view__button:hover {
+  background-color: var(--color-action);
 }
