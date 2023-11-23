@@ -35,7 +35,7 @@ button {
 :root {
   --color-primary: black;
   --color-secondary: white;
-  --color-action: rgb(0, 0, 0, 0.25);
+  --color-action: #BFBFBF;
   --border-color: black;
   --border-size: 4px;
 }
@@ -125,7 +125,7 @@ body {
   border: var(--border-size) solid var(--border-color);
 }
 .objects-view__create:hover {
-  background-color: grey;
+  background-color: var(--color-action);
 }
 .objects-view__list {
   flex: 7;
