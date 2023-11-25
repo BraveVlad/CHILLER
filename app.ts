@@ -153,40 +153,40 @@ function main() {
         updateFoldableMenuWithChillers();
     });
 
-    // Chiller.createChiller({
-    //     id: "123",
-    //     name: "ABCD",
-    //     liquidMax: 50,
-    //     liquidMin: 0,
-    //     liquidType: "goldmax"
-    // });
-    // Chiller.createChiller({
-    //     id: "234",
-    //     name: "aaaa",
-    //     liquidMax: 100,
-    //     liquidMin: 0,
-    //     liquidType: "brine"
-    // });
+    Chiller.createChiller({
+        id: "123",
+        name: "ABCD",
+        liquidMax: 50,
+        liquidMin: 0,
+        liquidType: "goldmax"
+    });
+    Chiller.createChiller({
+        id: "234",
+        name: "aaaa",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "brine"
+    });
 
-    // const testLiquidChange = Chiller.getChillerById("234");
-    // Chiller.setLiquidLevel(testLiquidChange, 25);
 
-    // Chiller.createChiller({
-    //     id: "5412",
-    //     name: "bbbb",
-    //     liquidMax: 100,
-    //     liquidMin: 0,
-    //     liquidType: "brine"
-    // });
 
-    // Chiller.createChiller({
-    //     id: "54212",
-    //     name: "bbbb",
-    //     liquidMax: 100,
-    //     liquidMin: 0,
-    //     liquidType: "brine"
-    // });
+    Chiller.createChiller({
+        id: "5412",
+        name: "bbbb",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "brine"
+    });
 
+    Chiller.createChiller({
+        id: "54212",
+        name: "bbbb",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "brine"
+    });
+    const testLiquidChange = Chiller.getChillerById("234");
+    Chiller.setLiquidLevel(testLiquidChange, 25);
     Chiller.loadStorage();
     loadChillerFoldableMenu();
     hideFoldableMenu();
