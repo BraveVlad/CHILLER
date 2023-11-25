@@ -1,4 +1,5 @@
 
+const STORAGE_CHILLERS_LIST = "storage_chillers"
 export type LiquidType = "brine" | "goldmax";
 
 export type Chiller = {
@@ -37,7 +38,15 @@ export function editChillerById(chillerId: string, newChiller: Omit<Chiller, "li
     target.liquidType = newChiller.liquidType;
 
     onUpdate();
+}
 
+export function loadChillers(newChillers: Chiller[]) {
+    clear();
+    newChillers.forEach((chiller) => chillers.push(chiller));
+}
+
+function clear() {
+    chillers.splice(0);
 }
 
 export function getChillers(): Chiller[] {
@@ -68,5 +77,25 @@ export function attachOnChillersUpdateListener(callback: OnChillerUpdateListener
 }
 
 export function onUpdate() {
+    saveStorage();
     onUpdateListeners.forEach((listener) => listener(getChillers()));
+}
+
+function saveStorage() {
+    console.log("Saving chillers")
+    clearStorage();
+    const serializedChillers = JSON.stringify(getChillers());
+    localStorage.setItem(STORAGE_CHILLERS_LIST, serializedChillers);
+}
+
+function clearStorage() {
+    localStorage.removeItem(STORAGE_CHILLERS_LIST);
+}
+
+export function loadStorage() {
+    const fetchedStoredChillers = localStorage.getItem(STORAGE_CHILLERS_LIST);
+    if (!fetchedStoredChillers) throw Error("No chillers found in storage");
+
+    const parsedChillers = JSON.parse(fetchedStoredChillers) as Chiller[];
+    loadChillers(parsedChillers);
 }
