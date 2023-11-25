@@ -156,6 +156,9 @@ body {
 .foldable-menu__object:hover {
   background-color: var(--color-action);
 }
+.foldable-menu__object--highlight {
+  background-color: var(--color-action);
+}
 
 .main-area {
   flex: 6;

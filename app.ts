@@ -31,8 +31,10 @@ type MenuObject = {
     title: string
 }
 
-const PERFIX_FOLDABLE_MENU = ".foldable-menu"
-const PERFIX_HIDE_MENU = "foldable-menu--hidden"
+const PERFIX_FOLDABLE_MENU = ".foldable-menu";
+const PERFIX_HIDE_MENU = "foldable-menu--hidden";
+const PERFIX_HIGHLIGHT_ITEM = "foldable-menu__object--highlight";
+const PERFIX_SELECTED_ITEM_DATA = "data-selected-item-id";
 
 const menu = document.querySelector(PERFIX_FOLDABLE_MENU) as HTMLDivElement;
 
@@ -66,16 +68,47 @@ function renderList(objects: MenuObject[]) {
     list.innerHTML = `
     ${objects.map(generateItemElement).join('\n')
         }
-    `
+    `;
+
+    attachClickEventsToItems(getAllListItems());
+}
+
+function getAllListItems(): NodeListOf<Element> {
+    return list.querySelectorAll(".foldable-menu__object");
 }
 
 // view 
 function generateItemElement(object: MenuObject) {
     return `
     <li class="foldable-menu__item">
-        <button class="foldable-menu__object" data-selected-item-id="${object.id}" >${object.title}</button>
+        <button class="foldable-menu__object" ${PERFIX_SELECTED_ITEM_DATA}="${object.id}">${object.title}</button>
     </li>
-    `
+    `;
+}
+
+function attachClickEventsToItems(itemElements: NodeListOf<Element>) {
+    itemElements.forEach((item) => item.addEventListener("click", (e) => {
+        const selectedElement = e.target as HTMLButtonElement;
+
+        removeHighlightFromItems();
+        highlightSelectedItem(selectedElement);
+
+        const selectedData = selectedElement.getAttribute(PERFIX_SELECTED_ITEM_DATA);
+        if (selectedData) onMenuItemSelected(selectedData);
+    }));
+}
+
+// controller
+function onMenuItemSelected(itemId: string) {
+    console.log("item pressed " + itemId);
+}
+
+function highlightSelectedItem(itemElement: HTMLButtonElement) {
+    itemElement.classList.add(PERFIX_HIGHLIGHT_ITEM);
+}
+function removeHighlightFromItems() {
+    const items = getAllListItems();
+    items.forEach((item) => item.classList.remove(PERFIX_HIGHLIGHT_ITEM));
 }
 
 function show() {
@@ -85,7 +118,6 @@ function show() {
 function hide() {
     menu.classList.add(PERFIX_HIDE_MENU);
 }
-
 
 function main() {
 

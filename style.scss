@@ -160,6 +160,10 @@ body {
         &:hover {
             background-color: var(--color-action);
         }
+
+        &--highlight {
+            background-color: var(--color-action);
+        }
     }
 }
 
