@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  all: unset;
+}
+
+:root {
+  --color-primary: black;
+  --color-secondary: white;
+  --color-action: #BFBFBF;
+  --font-size-huge: 2rem;
+  --font-size-big: 1.5rem;
+  --font-size-regular: 1rem;
+  --font-size-small: 0.75rem;
+  --kit-border-color: black;
+  --kit-border-size: 4px;
+}
+
+body {
+  display: flex;
+}
+
+.navbar {
+  --actions-gap: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--actions-gap);
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+.navbar__logo-wrapper {
+  flex: 1;
+  text-align: center;
+}
+.navbar__logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  font-size: var(--font-size-huge);
+}
+.navbar__actions {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  gap: var(--actions-gap);
+  font-size: var(--font-size-big);
+}
+.navbar__action {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+}
+.navbar__action:hover {
+  background-color: var(--color-action);
+}
+
+.dashboard {
+  flex: 6;
+}
