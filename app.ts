@@ -3,9 +3,6 @@ import * as FoldableMenuController from "./foldableMenu.controller.js";
 import * as FoldableMenu from "./foldableMenu.model.js";
 
 
-const screenView = document.querySelector(".screen") as HTMLElement;
-const screenTitleView = screenView.querySelector(".screen__title") as HTMLHeadingElement;
-const screenMainView = screenView.querySelector(".screen__main") as HTMLDivElement;
 
 
 type LiquidType = "Brine" | "Goldmax";
@@ -17,7 +14,7 @@ type Chiller = {
     liquidMax: number,
     liquidMin: number,
     liquidType: LiquidType,
-    lastChecked: number
+    lastChecked: Date
 }
 
 const chillers = [] as Chiller[];
@@ -29,37 +26,21 @@ function createChiller(chiller: Omit<Chiller, "liquidCurrent" | "lastChecked">) 
     const newChiller: Chiller = {
         ...chiller,
         liquidCurrent: 0,
-        lastChecked: 0
+        lastChecked: new Date()
     }
 
     chillers.push(newChiller);
+    console.log(chillers)
 }
 
-function generateChillerListView(chillers: Chiller[]) {
-
-}
-
-function generateChillerView(chiller: Chiller) {
-    return `
-    
-    `
+function getChillers(): Chiller[] {
+    return chillers.slice();
 }
 
 
-
-function main() {
-
-    console.log("Welcome to Chiller. app!")
-
-    showChillerMenu();
-    showChillerListScreen();
-
-}
-
-
-main();
-
-
+const screenView = document.querySelector(".screen") as HTMLElement;
+const screenTitleView = screenView.querySelector(".screen__title") as HTMLHeadingElement;
+const screenMainView = screenView.querySelector(".screen__main") as HTMLDivElement;
 
 function showChillerListScreen() {
     setScreenTitle("Main Chillers List");
@@ -73,30 +54,13 @@ function setScreenMainContent(content: HTMLElement) {
     screenMainView.replaceChildren();
     screenMainView.append(content);
 }
-const test: FoldableMenu.MenuItem[] = [
-    {
-        id: "1",
-        title: "first item"
-    },
-    {
-        id: "2",
-        title: "first item"
-    },
-    {
-        id: "3",
-        title: "first item"
-    },
-    {
-        id: "4",
-        title: "first item"
-    }
-]
+
 function showChillerMenu() {
 
     FoldableMenuView.setHeader("Chillers", "chillers")
     FoldableMenu.addOnUpdateListener(FoldableMenuView.renderList)
 
-    test.forEach((item) => FoldableMenu.addItem(item));
+    getChillers().forEach((chiller) => FoldableMenu.addItem({ id: chiller.id, title: chiller.name }));
 
     FoldableMenuController.attachCreateCallback((event) => {
         showCreateChiller();
@@ -112,3 +76,37 @@ function showCreateChiller() {
 function hideChillerMenu() {
     FoldableMenuView.hide();
 }
+
+
+function main() {
+
+    console.log("Welcome to Chiller. app!")
+
+    createChiller({
+        id: "123",
+        name: "ABCD",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "Brine"
+    });
+    createChiller({
+        id: "234",
+        name: "aaaa",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "Brine"
+    });
+    createChiller({
+        id: "5412",
+        name: "bbbb",
+        liquidMax: 100,
+        liquidMin: 0,
+        liquidType: "Brine"
+    });
+    showChillerMenu();
+    showChillerListScreen();
+
+}
+
+
+main();
