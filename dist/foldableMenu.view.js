@@ -3,6 +3,7 @@ export const PERFIX_SELECTED_ITEM_DATA = "data-selected-item-id";
 const PERFIX_FOLDABLE_MENU = ".foldable-menu";
 const PERFIX_HIDE_MENU = "foldable-menu--hidden";
 const PERFIX_HIGHLIGHT_ITEM = "foldable-menu__object--highlight";
+const PERFIX_ITEM = "foldable-menu__object";
 const menuView = document.querySelector(PERFIX_FOLDABLE_MENU);
 const titleView = menuView.querySelector(PERFIX_FOLDABLE_MENU + "__title");
 const amountNumberView = menuView.querySelector(PERFIX_FOLDABLE_MENU + "__amount");

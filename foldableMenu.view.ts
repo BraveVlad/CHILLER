@@ -1,10 +1,11 @@
-import { attachClickEventsToItems } from "./foldableMenu.controller.js";
+import { attachClickEventsToItems, attachCreateCallback } from "./foldableMenu.controller.js";
 import { MenuItem } from "./foldableMenu.model.js";
 
 export const PERFIX_SELECTED_ITEM_DATA = "data-selected-item-id";
 const PERFIX_FOLDABLE_MENU = ".foldable-menu";
 const PERFIX_HIDE_MENU = "foldable-menu--hidden";
 const PERFIX_HIGHLIGHT_ITEM = "foldable-menu__object--highlight";
+const PERFIX_ITEM = "foldable-menu__object";
 
 const menuView = document.querySelector(PERFIX_FOLDABLE_MENU) as HTMLDivElement;
 
@@ -32,6 +33,7 @@ export function renderList(objects: MenuItem[]) {
     setAmount(objects.length);
 
     attachClickEventsToItems(getAllListItemViews());
+
 }
 
 export function show() {
@@ -69,3 +71,4 @@ export function removeHighlightFromItems() {
     const items = getAllListItemViews();
     items.forEach((item) => item.classList.remove(PERFIX_HIGHLIGHT_ITEM));
 }
+

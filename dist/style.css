@@ -30,6 +30,7 @@ a:active {
 
 button {
   all: unset;
+  appearance: none;
 }
 
 :root {
@@ -43,6 +44,8 @@ button {
   --kit-title-height: 6rem;
   --kit-border-color: var(--color-primary);
   --kit-border-size: 6px;
+  --kit-border-size--small: 4px;
+  --kit-border-size--tiny: 2px;
   --kit-global-gap-big: 2rem;
   --kit-global-gap-regular: 1rem;
   --kit-global-gap-small: 0.5rem;
@@ -190,6 +193,9 @@ body {
 .objects-grid__item {
   border: var(--kit-border-size) solid var(--kit-border-color);
 }
+.objects-grid__item:hover {
+  background-color: var(--color-action);
+}
 
 .chiller-view {
   height: 100%;
@@ -214,4 +220,41 @@ body {
 }
 .chiller-view__liquid-level {
   width: 80%;
+}
+
+.object-editor {
+  padding: var(--kit-global-gap-big);
+  display: flex;
+  flex-direction: column;
+  gap: var(--kit-global-gap-regular);
+}
+.object-editor__fieldset {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.object-editor__label {
+  flex: 1;
+  margin-right: var(--kit-global-gap-regular);
+  font-size: var(--font-size-big);
+}
+.object-editor__input {
+  flex: 1;
+  height: calc(var(--font-size-big)*2);
+  padding: var(--kit-global-gap-small);
+  font-size: var(--font-size-big);
+  border: var(--kit-border-size--small) solid var(--kit-border-color);
+}
+.object-editor__submit {
+  width: 50%;
+  height: 4rem;
+  margin-top: var(--kit-global-gap-big);
+  margin-inline: auto;
+  background-color: white;
+  font-size: var(--font-size-big);
+  font-weight: bold;
+  border: var(--kit-border-size--small) solid var(--kit-border-color);
+}
+.object-editor__submit:hover {
+  background-color: var(--color-action);
 }

@@ -9,6 +9,14 @@ export function createChiller(chiller) {
     chillers.push(newChiller);
     onUpdate();
 }
+export function editChillerById(chillerId, newChiller) {
+    const target = getChillerById(chillerId);
+    target.name = newChiller.name;
+    target.liquidMin = newChiller.liquidMin;
+    target.liquidMax = newChiller.liquidMax;
+    target.liquidType = newChiller.liquidType;
+    onUpdate();
+}
 export function getChillers() {
     return chillers.slice();
 }

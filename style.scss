@@ -14,6 +14,8 @@
 
     --kit-border-color: var(--color-primary);
     --kit-border-size: 6px;
+    --kit-border-size--small: 4px;
+    --kit-border-size--tiny: 2px;
 
     --kit-global-gap-big: 2rem;
     --kit-global-gap-regular: 1rem;
@@ -202,6 +204,10 @@ body {
 
     &__item {
         border: var(--kit-border-size) solid var(--kit-border-color);
+
+        &:hover {
+            background-color: var(--color-action);
+        }
     }
 }
 
@@ -235,4 +241,49 @@ body {
         width: 80%;
     }
 
+}
+
+.object-editor {
+    padding: var(--kit-global-gap-big);
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--kit-global-gap-regular);
+
+    &__fieldset {
+        border: none;
+
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    &__label {
+        flex: 1;
+        margin-right: var(--kit-global-gap-regular);
+        font-size: var(--font-size-big);
+    }
+
+    &__input {
+        flex: 1;
+        height: calc(var(--font-size-big)*2);
+        padding: var(--kit-global-gap-small);
+        font-size: var(--font-size-big);
+        border: var(--kit-border-size--small) solid var(--kit-border-color);
+    }
+
+    &__submit {
+        width: 50%;
+        height: 4rem;
+        margin-top: var(--kit-global-gap-big);
+        margin-inline: auto;
+        background-color: white;
+        font-size: var(--font-size-big);
+        font-weight: bold;
+        border: var(--kit-border-size--small) solid var(--kit-border-color);
+
+        &:hover {
+            background-color: var(--color-action);
+        }
+    }
 }

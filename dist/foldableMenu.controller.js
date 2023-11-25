@@ -1,9 +1,11 @@
 import { PERFIX_SELECTED_ITEM_DATA, createButtonView, highlightSelectedItem, removeHighlightFromItems } from "./foldableMenu.view.js";
+const onSelectedListeners = [];
 export function attachCreateCallback(createCallback) {
+    console.log("create attached");
     createButtonView.addEventListener("click", createCallback);
 }
 function onMenuItemSelected(itemId) {
-    console.log("item pressed " + itemId);
+    onSelected(itemId);
 }
 export function attachClickEventsToItems(itemElements) {
     itemElements.forEach((item) => item.addEventListener("click", (e) => {
@@ -14,4 +16,10 @@ export function attachClickEventsToItems(itemElements) {
         if (selectedData)
             onMenuItemSelected(selectedData);
     }));
+}
+export function attachOnMenuItemSelected(callback) {
+    onSelectedListeners.push(callback);
+}
+function onSelected(itemId) {
+    onSelectedListeners.forEach((listener) => listener(itemId));
 }

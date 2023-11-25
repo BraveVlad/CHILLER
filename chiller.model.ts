@@ -1,5 +1,5 @@
 
-export type LiquidType = "Brine" | "Goldmax";
+export type LiquidType = "brine" | "goldmax";
 
 export type Chiller = {
     id: string,
@@ -26,6 +26,18 @@ export function createChiller(chiller: Omit<Chiller, "liquidCurrent" | "lastChec
     chillers.push(newChiller);
 
     onUpdate();
+}
+
+export function editChillerById(chillerId: string, newChiller: Omit<Chiller, "liquidCurrent" | "lastChecked">) {
+    const target = getChillerById(chillerId);
+
+    target.name = newChiller.name;
+    target.liquidMin = newChiller.liquidMin;
+    target.liquidMax = newChiller.liquidMax;
+    target.liquidType = newChiller.liquidType;
+
+    onUpdate();
+
 }
 
 export function getChillers(): Chiller[] {
