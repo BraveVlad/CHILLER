@@ -104,6 +104,9 @@ body {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
+.foldable-menu--hidden {
+  display: none;
+}
 .foldable-menu__title {
   flex-basis: var(--kit-title-height);
   display: flex;
