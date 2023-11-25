@@ -5,17 +5,20 @@ export const PEFIX_ITEM_DATA = "data-chiller-item";
 
 export function generateChillerGridView(chillers: Chiller[]) {
     const gridListView = document.createElement("ul");
+
     gridListView.classList.add("objects-grid");
 
     gridListView.innerHTML = `
         ${chillers.map(generateChillerGridItem).join('\n')}
     `;
     attachClickEventsToGridItems(getGridItemsList(gridListView));
+
     return gridListView;
 }
 
 function generateChillerGridItem(chiller: Chiller) {
     const liquidPercentage = calculateLiquidLevelPercentage(chiller);
+
     return `
         <li class="objects-grid__item" ${PEFIX_ITEM_DATA}="${chiller.id}">
             <div class="chiller-view" >

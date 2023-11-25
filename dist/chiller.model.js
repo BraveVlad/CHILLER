@@ -51,7 +51,6 @@ export function onUpdate() {
     onUpdateListeners.forEach((listener) => listener(getChillers()));
 }
 function saveStorage() {
-    console.log("Saving chillers");
     clearStorage();
     const serializedChillers = JSON.stringify(getChillers());
     localStorage.setItem(STORAGE_CHILLERS_LIST, serializedChillers);

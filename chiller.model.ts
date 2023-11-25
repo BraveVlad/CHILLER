@@ -62,13 +62,14 @@ export function getChillerById(id: string) {
 
 export function setLiquidLevel(chiller: Chiller, amount: number) {
     if (amount < chiller.liquidMin || amount > chiller.liquidMax)
-        throw Error("Invalid liquid level amount")
+        throw Error("Invalid liquid level amount");
 
     chiller.liquidCurrent = amount;
 }
 
 export function calculateLiquidLevelPercentage(chiller: Chiller) {
     const totalCapacity = chiller.liquidMax - chiller.liquidMin;
+
     return (chiller.liquidCurrent / totalCapacity) * 100;
 }
 
@@ -82,7 +83,6 @@ export function onUpdate() {
 }
 
 function saveStorage() {
-    console.log("Saving chillers")
     clearStorage();
     const serializedChillers = JSON.stringify(getChillers());
     localStorage.setItem(STORAGE_CHILLERS_LIST, serializedChillers);
@@ -94,8 +94,10 @@ function clearStorage() {
 
 export function loadStorage() {
     const fetchedStoredChillers = localStorage.getItem(STORAGE_CHILLERS_LIST);
+
     if (!fetchedStoredChillers) throw Error("No chillers found in storage");
 
     const parsedChillers = JSON.parse(fetchedStoredChillers) as Chiller[];
+
     loadChillers(parsedChillers);
 }

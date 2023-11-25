@@ -28,22 +28,19 @@ function showChillerListScreen() {
 }
 
 function loadChillerFoldableMenu() {
-
     FoldableMenuView.setHeader("Chillers", "chillers")
     FoldableMenu.addOnUpdateListener(FoldableMenuView.renderList)
     FoldableMenuController.attachCreateCallback((event) => {
         showCreateChillerScreen();
     });
-
     updateFoldableMenuWithChillers();
     FoldableMenuController.attachOnMenuItemSelected((itemId) => {
         showChillerEditScreen(Chiller.getChillerById(itemId));
-    })
-
+    });
 }
 
 function convertChillerToMenuItem(chiller: Chiller.Chiller): FoldableMenu.MenuItem {
-    return { id: chiller.id, title: chiller.name }
+    return { id: chiller.id, title: chiller.name };
 }
 
 
@@ -65,13 +62,14 @@ function updateFoldableMenuWithChillers() {
 // }
 
 function showChillerEditScreen(chiller: Chiller.Chiller) {
-    setScreenTitle(`Chiller ${chiller.name} Editor`)
+    setScreenTitle(`Chiller ${chiller.name} Editor`);
     setScreenMainContent(generateChillerEditForm(chiller));
     showFoldableMenu();
 }
 
 function generateChillerEditForm(chiller: Chiller.Chiller) {
     const editor = document.createElement("form") as HTMLFormElement;
+
     editor.classList.add("object-editor");
     editor.name = "chiller-editor";
     editor.setAttribute("data-edited-chiller-id", chiller.id);
@@ -126,8 +124,8 @@ function onChillerEditSubmit(event: SubmitEvent) {
 
     const editor = event.target as HTMLFormElement;
     const editorData = new FormData(editor);
-
     const chillerId = editor.getAttribute("data-edited-chiller-id");
+
     if (!chillerId) throw Error("Couldnt find chiller ID to edit");
 
     Chiller.editChillerById(chillerId,
@@ -144,7 +142,7 @@ function onChillerEditSubmit(event: SubmitEvent) {
 }
 
 function showCreateChillerScreen() {
-    console.log("create chiller ")
+    console.log("create chiller ");
 }
 
 function main() {

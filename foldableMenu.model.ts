@@ -10,17 +10,13 @@ type OnMenuUpdateListener = (items: MenuItem[]) => void;
 const onUpdateListeners = [] as OnMenuUpdateListener[];
 
 export function addItem(item: MenuItem) {
-
     items.push(item);
-
     onUpdate();
 }
 
 export function addItems(itemsList: MenuItem[]) {
     clearItems();
-
     itemsList.forEach((item) => items.push(item));
-
     onUpdate();
 }
 

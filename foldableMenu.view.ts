@@ -24,16 +24,12 @@ export function setHeader(menuTitle: string, countedItemsName: string) {
 }
 
 export function renderList(objects: MenuItem[]) {
-
     listView.replaceChildren();
     listView.innerHTML = `
     ${objects.map(generateItemElement).join('\n')}
     `;
-
     setAmount(objects.length);
-
     attachClickEventsToItems(getAllListItemViews());
-
 }
 
 export function show() {
