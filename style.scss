@@ -144,7 +144,7 @@ body {
         align-items: stretch;
         gap: var(--kit-global-gap-regular);
 
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     &__item {

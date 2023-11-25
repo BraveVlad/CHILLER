@@ -142,7 +142,7 @@ body {
   flex-direction: column;
   align-items: stretch;
   gap: var(--kit-global-gap-regular);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .foldable-menu__item {
   flex: 0 0 3rem;
