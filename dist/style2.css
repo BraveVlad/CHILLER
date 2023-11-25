@@ -40,8 +40,12 @@ button {
   --font-size-big: 1.5rem;
   --font-size-regular: 1rem;
   --font-size-small: 0.75rem;
-  --kit-border-color: black;
-  --kit-border-size: 4px;
+  --kit-title-height: 6rem;
+  --kit-border-color: var(--color-primary);
+  --kit-border-size: 6px;
+  --kit-global-gap-big: 2rem;
+  --kit-global-gap-regular: 1rem;
+  --kit-global-gap-small: 0.5rem;
 }
 
 body {
@@ -49,32 +53,30 @@ body {
 }
 
 .navbar {
-  --actions-gap: 2rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--actions-gap);
+  gap: var(--kit-global-gap-big);
   text-align: center;
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
 .navbar__logo-wrapper {
-  flex: 1;
-  text-align: center;
+  flex-basis: var(--kit-title-height);
 }
 .navbar__logo {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   font-size: var(--font-size-huge);
 }
 .navbar__actions {
   flex: 9;
   display: flex;
   flex-direction: column;
-  gap: var(--actions-gap);
+  gap: var(--kit-global-gap-big);
   font-size: var(--font-size-big);
 }
 .navbar__action {
@@ -83,9 +85,75 @@ body {
   padding: 1rem;
 }
 .navbar__action:hover {
-  background-color: var(--color-action);
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
 }
 
 .dashboard {
   flex: 6;
+  display: flex;
+}
+
+.foldable-menu {
+  flex: 1;
+  padding: var(--kit-global-gap-small);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+.foldable-menu__title {
+  flex-basis: var(--kit-title-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: var(--font-size-big);
+}
+.foldable-menu__header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.foldable-menu__header > * {
+  flex: 1;
+  display: inline-block;
+  padding: 1rem;
+}
+.foldable-menu__create {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+  border: var(--kit-border-size) solid var(--kit-border-color);
+}
+.foldable-menu__create:hover {
+  background-color: var(--color-action);
+}
+.foldable-menu__list {
+  flex: 8;
+  margin-top: var(--kit-global-gap-small);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--kit-global-gap-regular);
+  overflow-y: scroll;
+}
+.foldable-menu__item {
+  flex: 0 0 3rem;
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+.foldable-menu__object {
+  width: 100%;
+  height: 100%;
+}
+.foldable-menu__object:hover {
+  background-color: var(--color-action);
+}
+
+.main-area {
+  flex: 6;
+  background-color: green;
 }
