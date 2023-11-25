@@ -3,6 +3,11 @@ import * as FoldableMenuController from "./foldableMenu.controller.js";
 import * as FoldableMenu from "./foldableMenu.model.js";
 
 
+const screenView = document.querySelector(".screen") as HTMLElement;
+const screenTitleView = screenView.querySelector(".screen__title") as HTMLHeadingElement;
+const screenMainView = screenView.querySelector(".screen__main") as HTMLDivElement;
+
+
 type LiquidType = "Brine" | "Goldmax";
 
 type Chiller = {
@@ -17,6 +22,8 @@ type Chiller = {
 
 const chillers = [] as Chiller[];
 
+type OnChillerUpdateListener = (chillers: Chiller[]) => void;
+const onUpdateListeners = [] as OnChillerUpdateListener[];
 
 function createChiller(chiller: Omit<Chiller, "liquidCurrent" | "lastChecked">) {
     const newChiller: Chiller = {
@@ -28,6 +35,44 @@ function createChiller(chiller: Omit<Chiller, "liquidCurrent" | "lastChecked">) 
     chillers.push(newChiller);
 }
 
+function generateChillerListView(chillers: Chiller[]) {
+
+}
+
+function generateChillerView(chiller: Chiller) {
+    return `
+    
+    `
+}
+
+
+
+function main() {
+
+    console.log("Welcome to Chiller. app!")
+
+    showChillerMenu();
+    showChillerListScreen();
+
+}
+
+
+main();
+
+
+
+function showChillerListScreen() {
+    setScreenTitle("Main Chillers List");
+}
+
+function setScreenTitle(title: string) {
+    screenTitleView.innerHTML = title;
+}
+
+function setScreenMainContent(content: HTMLElement) {
+    screenMainView.replaceChildren();
+    screenMainView.append(content);
+}
 const test: FoldableMenu.MenuItem[] = [
     {
         id: "1",
@@ -46,7 +91,6 @@ const test: FoldableMenu.MenuItem[] = [
         title: "first item"
     }
 ]
-
 function showChillerMenu() {
 
     FoldableMenuView.setHeader("Chillers", "chillers")
@@ -55,28 +99,16 @@ function showChillerMenu() {
     test.forEach((item) => FoldableMenu.addItem(item));
 
     FoldableMenuController.attachCreateCallback((event) => {
-        showCreateChillerMenu();
+        showCreateChiller();
     });
 
     FoldableMenuView.show();
 }
 
-function showCreateChillerMenu() {
+function showCreateChiller() {
     console.log("create chiller ")
 }
 
 function hideChillerMenu() {
     FoldableMenuView.hide();
 }
-
-
-function main() {
-
-    console.log("Welcome to Chiller. app!")
-
-    showChillerMenu();
-
-}
-
-
-main();
