@@ -1,0 +1,137 @@
+@use 'reset';
+
+:root {
+    --color-primary: black;
+    --color-secondary: white;
+    --color-action: #BFBFBF;
+    --border-color: black;
+    --border-size: 4px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    grid-template-rows: 1fr 10fr;
+}
+
+.topbar {
+    grid-column: 2/3;
+    grid-row: 1/1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-inline: 0.5rem;
+
+    &__title {
+        margin-inline: auto;
+    }
+}
+
+.main-logo {
+    grid-column: 1/1;
+    grid-row: 1/1;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+
+    h1 {
+        padding: 1rem;
+        margin: auto 0;
+        color: var(--color-secondary);
+    }
+
+}
+
+.menubar {
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    background-color: var(--color-primary);
+
+    &__item {
+        text-align: center;
+        padding: 1rem;
+
+        color: white;
+    }
+}
+
+.dashboard {
+    grid-column: 2/3;
+    grid-row: 2/3;
+
+    display: flex;
+    justify-content: stretch;
+
+    &__menu {
+        flex: 1;
+    }
+
+    &__mainarea {
+        flex: 5;
+    }
+}
+
+.objects-view {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    color: var(--color-secondary);
+    border: var(--border-size) solid var(--border-color);
+    gap: 1rem;
+
+    &__header {
+        flex: 2;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: stretch;
+        text-align: center;
+        background-color: var(--color-primary);
+
+    }
+
+    &__create {
+        padding: 1rem;
+        color: var(--color-primary);
+        background-color: var(--color-secondary);
+        border: var(--border-size) solid var(--border-color);
+
+        &:hover {
+            background-color: var(--color-action);
+        }
+    }
+
+    &__list {
+        flex: 7;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        text-align: center;
+
+    }
+
+    &__button {
+        padding: 1rem;
+        border: var(--border-size) solid var(--border-color);
+        color: black;
+        background-color: var(--color-secondary);
+
+        &:hover {
+            background-color: var(--color-action);
+        }
+    }
+}
