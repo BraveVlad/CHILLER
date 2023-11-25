@@ -16,6 +16,18 @@ export function addItem(item: MenuItem) {
     onUpdate();
 }
 
+export function addItems(itemsList: MenuItem[]) {
+    clearItems();
+
+    itemsList.forEach((item) => items.push(item));
+
+    onUpdate();
+}
+
+function clearItems() {
+    items.splice(0);
+}
+
 function getItems(): MenuItem[] {
     return items.slice();
 }

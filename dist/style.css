@@ -208,6 +208,10 @@ body {
   font-size: var(--font-size-big);
   font-weight: bold;
 }
+.chiller-view__last-checked {
+  padding: 0.25rem;
+  text-align: center;
+}
 .chiller-view__liquid-level {
   width: 80%;
 }
